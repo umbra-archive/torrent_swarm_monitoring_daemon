@@ -1,0 +1,28 @@
+It turn out, there are many many bencoder libs on GitHub,
+some are broken and return false info hashes..
+Many of these modules share the same module name. Meaning if you pip install Lib B, it could be that now Lib A will return a false infohash.
+
+
+in this dir there are a few working examples...
+
+
+when running into problem, be sure to check:
+```
+pip freeze | grep -i ben
+pip list | grep -i ben
+pip list --user | grep -i ben
+```
+
+### See also
+https://github.com/fuzeman/bencode.py/issues/1#issuecomment-283198968
+```
+> This is probably caused by a conflicting package that is using the same module name.
+>
+> All these packages use the same module name (so only one can be installed):
+>
+> https://pypi.python.org/pypi/bencode
+> https://pypi.python.org/pypi/BitTorrent-bencode
+> https://pypi.python.org/pypi/bencode-parser
+> https://pypi.python.org/pypi/python-bencode
+> I'm thinking it might be best to change the name of the package to avoid conflicts with these other existing packages...
+```

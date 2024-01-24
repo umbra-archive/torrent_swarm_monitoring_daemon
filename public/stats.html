@@ -1,0 +1,70 @@
+<!doctype html>
+<title> Torrent Health Tracker  </title>
+
+<style>
+    body {
+        font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif;
+    }
+    table tr:hover {
+        background-color: #ccc;
+    }
+    table td {
+        padding: .25em 1em;
+        border-bottom: 1px solid #333;
+    }
+    table td:nth-child(1) {
+        font-family: 'Courier New', 'Courier', monospace;
+    }
+</style>
+<script src="./lib/jquery.min.js"></script>
+<script src="./lib/tablesort.min.js"></script>
+<script src="./lib/tablesort.number.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        Array.from(document.querySelectorAll("table")).forEach(function(t) {
+            new Tablesort(t);
+        })
+    })
+</script>
+
+<section class="content">
+  <header>
+    
+<h1> Torrent Health Tracker <a style="float: right;"> Updated: 2024-01-24 15:33:26.778952 UTC </a>
+</h1>
+<h4> <a href="./README">(about</a> | <a href="https://tbd.com/tbd">code |<a href=./index.html> index</a> )</a>
+<a style="float: right;" href="./torrent.json">(download as json)</a>
+</h4>
+
+
+  </header>
+  
+<center>
+<table>
+  <thead>
+      <th>Collection</th>
+      <th>Torrent Count</th>
+  </thead>
+  <tbody>
+</center>
+
+<tr>
+  <td>  libgen_r </td>
+  <td>  4142 </td>
+</tr>
+
+<tr>
+  <td>  sci-hub </td>
+  <td>  876 </td>
+</tr>
+
+<tr>
+  <td>  aa-ia </td>
+  <td>  64 </td>
+</tr>
+
+    </tbody>
+</table>
+
+
+</section>

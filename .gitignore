@@ -1,0 +1,9 @@
+# python
+venv
+__pycache__/
+
+# project specific
+*.rdb
+old
+TODO
+app.log

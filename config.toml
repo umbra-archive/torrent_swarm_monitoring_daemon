@@ -1,0 +1,106 @@
+# base_path applies to output, template and db/redis paths
+base_path = "/opt/torrent_swarm_monitoring_daemon"
+
+#[redis]
+#rdb_file = "db/peer_cache.rdb"
+
+[sqlite]
+db_file = "db/torrent_files.sqlite"
+timeout = 20
+
+[sqlite.pragmas]
+busy_timeout = 10000
+
+[dht]
+listening_port_udp = 12346
+listening_ip = "0.0.0.0"
+lookup_parallelism = 30
+
+[tracker]
+udp_uri = "udp://tracker.opentrackr.org:1337/announce"
+
+[output]
+json_path = "out/torrents.json"
+html_path = "out/torrents.html"
+stats_path = "out/stats.html"
+
+template_dir = "templates"
+torrent_html_template_file = "torrent.html"
+stats_html_template_file = "stats.html"
+
+
+[collection]
+  ## as toml tables are unordered, we assign a redis_db_id manually
+  ## redis_db_id must be uniq and below 16
+  [collection.libgen_r]
+  torrent_url = "https://libgen.vg/torrents/libgen/"
+  enabled = true
+  redis_db_id = 0
+
+  [collection.sci-hub]
+  torrent_url = "https://libgen.is/scimag/repository_torrent/"
+  enabled = true
+  redis_db_id = 2
+
+  [collection.aa-ia]
+  torrent_url = "https://annas-archive.org/torrents"
+  enabled = true
+  redis_db_id = 3
+  required_substring = 'managed_by_aa/ia/annas-archive-ia-'
+
+  [collection.aa]
+  torrent_url = "https://www.idk.foo"
+  enabled = false
+  redis_db_id = 1
+
+[monitor]
+[monitor.dht]
+  enable = true
+  interval_in_sec = 1200
+[monitor.tracker]
+  enable = true
+  interval_in_sec = 1200
+
+[proxy]
+url = "TBD"
+enforce = false
+
+[logging]
+version = 1
+
+[logging.loggers.root]
+# levels are: DEBUG, INFO, WARNING, ERROR, CRITICAL
+level = "DEBUG"
+handlers = ["stderr_handler"]
+
+[logging.loggers.peewee]
+level = "WARNING"
+qualname = "peewee"
+
+[logging.handlers.file_handler]
+class = "logging.FileHandler"
+level = "INFO"
+formatter = "simple"
+filename = "app.log"
+
+[logging.handlers.stderr_handler]
+class = "logging.StreamHandler"
+level = "DEBUG"
+formatter = "detailed"
+stream = "ext://sys.stderr"
+
+[logging.handlers.syslog_handler]
+class = "logging.handlers.SysLogHandler"
+level = "WARNING"
+formatter = "detailed_notime"
+address = "/dev/log"
+
+[logging.formatters]
+[logging.formatters.simple]
+format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[logging.formatters.detailed_notime]
+format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[logging.formatters.detailed]
+format = "%(asctime)s - %(module)s - %(levelname)s - %(message)s - %(pathname)s:%(lineno)d"
