@@ -1,4 +1,5 @@
-PYTHON := $(shell command -v python3 || command -v python)
+BASE_PYTHON := $(shell command -v python3 || command -v python)
+VENV_PYTHON := python
 VENV := venv
 REQUIREMENTS := requirements.txt
 APP_SCRIPT := main.py
@@ -9,9 +10,9 @@ debian:
 	sudo apt install python3.11-venv
 
 setup:
-	$(PYTHON) -m venv $(VENV)
-	. $(VENV)/bin/activate; $(PYTHON) -m pip install -r $(REQUIREMENTS)
+	$(BASE_PYTHON) -m venv $(VENV)
+	. $(VENV)/bin/activate; $(VENV_PYTHON) -m pip install -r $(REQUIREMENTS)
 
 run:
-	. $(VENV)/bin/activate; $(PYTHON) $(APP_SCRIPT)
+	. $(VENV)/bin/activate; $(VENV_PYTHON) $(APP_SCRIPT)
 
