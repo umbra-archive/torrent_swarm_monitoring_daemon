@@ -125,7 +125,7 @@ class DHTSwarmMonitor:
         for r in results:
             dht_count = len(r[1])
             infohash_hex = r[0].hex()
-            logger.debug("Found: {dht_count} peers for infohash: {infohash_hex}")
+            logger.debug(f"Found: {dht_count} peers for infohash: {infohash_hex}")
             query = model.update(dht_peers=dht_count, dht_scraped=int(time.time())).where(
                 model.infohash == infohash_hex
             )
