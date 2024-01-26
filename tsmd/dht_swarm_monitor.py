@@ -82,7 +82,7 @@ class DHTSwarmMonitor:
 
         if isinstance(collection, list):
             for c in collection:
-                self.run(c)
+                await self.run(c)
             return
         table_name = collection.name
         model = create_dynamic_table_model(table_name)
