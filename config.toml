@@ -1,5 +1,5 @@
 # base_path applies to output, template and db/redis paths
-base_path = "/opt/torrent_swarm_monitoring_daemon"
+base_path = "/opt/app/torrent_swarm_monitoring_daemon"
 
 #[redis]
 #rdb_file = "db/peer_cache.rdb"
