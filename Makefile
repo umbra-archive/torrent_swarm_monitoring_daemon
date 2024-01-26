@@ -15,4 +15,12 @@ setup:
 
 run:
 	. $(VENV)/bin/activate; $(VENV_PYTHON) $(APP_SCRIPT)
+	
+forever:
+	while true; do \
+		nohup sh -c '. $(VENV)/bin/activate; $(VENV_PYTHON) $(APP_SCRIPT)'; \
+		sleep 1; \
+		bash ../ipdl.cat/sync.sh; \
+	done
+
 

@@ -8,3 +8,5 @@ old
 TODO
 app.log
 *.swp
+nohup.out
+ERROR
