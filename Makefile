@@ -18,9 +18,9 @@ run:
 	
 forever:
 	while true; do \
-		nohup sh -c '. $(VENV)/bin/activate; $(VENV_PYTHON) $(APP_SCRIPT)'; \
-		sleep 1; \
-		bash ../ipdl.cat/sync.sh; \
+	        . $(VENV)/bin/activate; $(VENV_PYTHON) $(APP_SCRIPT); \
+                sleep 1; \
+                bash -c 'cd ../ipdl.cat;  bash sync.sh;'; \
 	done
 
 
