@@ -43,14 +43,13 @@ Some client-side security features are not implemented. For more details, see th
 ## Security
 Running this server implies a certain level of trust in the website defining the collection. (see config)  This includes:
 - Vulnerability to blind GET SSRF, which should be mitigated at the network level.
-- Potential for XSS attacks through links.
 
 ### Future Improvements
 - Implement an HTTP proxy feature for crawling to mitigate SSRF.
 - Add more tests.
 - Introduce UDP tracker failover and multiple tracker support.
 - Enhance concurrency limits in AIODHT library.
-- Incorporate better SSRF protection and XSS prevention.
+- Incorporate better SSRF protection.
 - Add capabilities for web torrent and web DHT.
 - Explore alternative peer discovery methods.
 

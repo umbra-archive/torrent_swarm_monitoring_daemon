@@ -103,6 +103,12 @@ class TorrentFileSync:
             logger.info(f"DB table {self.collection.name} does not exist, creating")
             db.create_tables([self.torrent_file_table])
 
+    def filename_is_sus(self, url):
+        ### make sure there is nothing funky in the filname or url that could reach our output
+        ### only A-Za-z0-9:./-_
+        also_okay = ":./_-"
+        return not all(c.isalnum() or c in also_okay for c in url)
+
     def is_irrelevant(self, url):
         if not url.endswith(".torrent"):
             logger.info(
@@ -135,6 +141,10 @@ class TorrentFileSync:
             file_name = link.get("href")
             remote_file_url = urljoin(self.collection.url, file_name)
             logger.info(f"Processing link: {file_name}")
+
+            if self.filename_is_sus(remote_file_url):
+                logger.warning(f"file name smells suspect")
+                continue
 
             if error_msg := self.is_irrelevant(remote_file_url):
                 continue
