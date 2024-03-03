@@ -43,6 +43,7 @@ Some client-side security features are not implemented. For more details, see th
 ## Security
 Running this server implies a certain level of trust in the website defining the collection. (see config)  This includes:
 - Vulnerability to blind GET SSRF, which should be mitigated at the network level.
+- XSS is propperly mitigated
 
 ### Future Improvements
 - Implement an HTTP proxy feature for crawling to mitigate SSRF.
