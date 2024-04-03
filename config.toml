@@ -53,6 +53,11 @@ stats_html_template_file = "stats.html"
   enabled = false
   redis_db_id = 1
 
+  [collection.libgen_f]
+  torrent_url = "https://data.ipdl.cat/torrent-archive/f/"
+  enabled = true
+  redis_db_id = 4
+
 [monitor]
 [monitor.dht]
   enable = true
